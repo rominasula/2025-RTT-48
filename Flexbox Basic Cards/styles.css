@@ -1,0 +1,44 @@
+.card-body {
+   border: 1px solid black;
+   width: 300px;
+}
+
+.container {
+    display: flex;
+}
+.img-container img {
+   max-width: 100%;
+   height: auto;
+}
+.img-container2 img {
+   max-width: 100%;
+   height: auto;
+}
+.img-container3 img {
+   max-width: 100%;
+   height: auto;
+}
+.img-container4 img {
+   max-width: 100%;
+   height: auto;
+}
+.img-container5 img {
+   max-width: 100%;
+   height: auto;
+}
+.img-container6 img {
+   max-width: 100%;
+   height: auto;
+}
+.img-container7 img {
+   max-width: 100%;
+   height: auto;
+}
+.img-container8 img {
+   max-width: 100%;
+   height: auto;
+}
+
+.card-body p, .card-body h1 {
+   margin: 8px;
+}

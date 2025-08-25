@@ -1,0 +1,16 @@
+div {
+    border: 1px solid;
+    width: 50px;
+    height: 50px;
+    
+}
+#box1 {
+    background: conic-gradient(#f69d3c, #3f87a6);
+    float: left;
+   box-shadow: 10px 5px 5px purple;
+}
+
+#box2 {
+    float: left;
+   box-shadow: 10px 5px 5px blue;
+}

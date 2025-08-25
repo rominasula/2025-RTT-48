@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 400px;
+  margin: 50px auto;
+  gap: 20px;
+}
+
+.boxes {
+  border: 0.1px solid;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  font-size: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#box1 {
+  background-color: green;
+}
+#box2 {
+  background-color: yellow;
+}
+#box3 {
+  background-color: pink;
+}
+#box4 {
+  background-color: blue;
+}
+#box5 {
+  background-color: red;
+}
+#box6 {
+  background-color: orange;
+}
