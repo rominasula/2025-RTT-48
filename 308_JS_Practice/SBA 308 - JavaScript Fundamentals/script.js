@@ -79,7 +79,21 @@ const LearnerSubmissions = [
 function getLearnerData(course, ag, submissions) {
   // here, we would process this data to achieve the desired result.
 
- 
+ //Applies a late penalty of 10% of total points if the submission is late.
+
+function applyLatePenalty(score, dueDate, submittedDate, pointsPossible) {
+  // Calculate the difference in milliseconds and convert to days
+  const msPerDay = 24 * 60 * 60 * 1000; 
+  const daysLate = Math.ceil((submittedDate.getTime() - dueDate.getTime()) / msPerDay);
+
+  // If the submission is late, subtract 10% of the total points
+  if (daysLate > 0) {
+    score -= pointsPossible * 0.1;
+  }
+
+  // Ensure the score never goes below zero
+  return Math.max(score, 0);
+}
 
 
   const result = [
