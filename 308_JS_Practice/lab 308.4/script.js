@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> e5d0411 (SBA 308: JavaScript Fundamentals)
 // Part 1: Detect number of columns from CSV header
 
 let csvData = "ID,Name,Occupation,Age,Color\n42,Bruce,Knight,41,blue\n57,Bob,Fry Cook,19,red\n63,Blaine,Quiz Master,58,white\n98,Bill,Doctor’s Assistant,26,black";
@@ -107,4 +110,8 @@ let csvRows = objectArray.map(obj => {
 let finalCSV = [csvHeader, ...csvRows].join('\n');
 
 console.log("Part 5 - Final CSV Output:");
+<<<<<<< HEAD
 console.log(finalCSV);
+=======
+console.log(finalCSV);
+>>>>>>> e5d0411 (SBA 308: JavaScript Fundamentals)
