@@ -110,10 +110,56 @@ function getLearnerData(course, ag, submissions) {
   }
 });
 
-console.log("Validation passed");
+console.log("Validation passed"); 
 
 
-   
+    // Process learner data
+    const learnerResults = {};
+
+    for (let i = 0; i < submissions.length; i++) {
+      const sub = submissions[i];
+      const assignment = ag.assignments.find(a => a.id === sub.assignment_id);
+
+      // Use continue to skip submissions without a matching assignment
+      if (!assignment) {
+        console.log(`Skipping submission ${sub.assignment_id} (no matching assignment)`);
+        continue;
+      }
+
+      const learnerId = sub.learner_id;
+
+      // Convert to Date objects
+      const dueDate = new Date(assignment.due_at);
+      const submittedDate = new Date(sub.submission.submitted_at);
+
+      // Apply late penalty
+      const adjustedScore = applyLatePenalty(
+        sub.submission.score,
+        dueDate,
+        submittedDate,
+        assignment.points_possible
+      );
+
+      // Store learner data
+      if (!learnerResults[learnerId]) {
+        learnerResults[learnerId] = { id: learnerId, totalScore: 0, totalPossible: 0 };
+      }
+
+      learnerResults[learnerId].totalScore += adjustedScore;
+      learnerResults[learnerId].totalPossible += assignment.points_possible;
+
+      // Store assignment score as percentage
+      learnerResults[learnerId][`assignment_${assignment.id}`] =
+        +(adjustedScore / assignment.points_possible).toFixed(2);
+    }
+
+    // Convert to array and calculate overall average
+    return Object.values(learnerResults).map(learner => {
+      learner.avg = +(learner.totalScore / learner.totalPossible).toFixed(2);
+      delete learner.totalScore;
+      delete learner.totalPossible;
+      return learner;
+    });
 
   } catch (error) {
     console.error("Error in getLearnerData:", error.message);
