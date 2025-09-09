@@ -29,3 +29,26 @@ topMenuEl.style.backgroundColor = 'var(--top-menu-bg)';
 // 4. Add the 'flex-around' class
 topMenuEl.classList.add('flex-around');
 
+// Part 3: Add Menu Buttons
+
+var menuLinks = [
+  { text: 'about', href: '/about' },
+  { text: 'catalog', href: '/catalog' },
+  { text: 'orders', href: '/orders' },
+  { text: 'account', href: '/account' },
+];
+
+// Loop through menuLinks and build <a> tags
+menuLinks.forEach(link => {
+  // 1. Create an <a> element
+  const aEl = document.createElement('a');
+
+  // 2. Set the href attribute
+  aEl.setAttribute('href', link.href);
+
+  // 3. Set the visible text content
+  aEl.textContent = link.text.toUpperCase(); 
+
+  // 4. Append to topMenuEl
+  topMenuEl.appendChild(aEl);
+});
