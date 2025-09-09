@@ -76,9 +76,6 @@ const LearnerSubmissions = [
   }
 ];
 
-function getLearnerData(course, ag, submissions) {
-  // here, we would process this data to achieve the desired result.
-
  //Applies a late penalty of 10% of total points if the submission is late.
 
 function applyLatePenalty(score, dueDate, submittedDate, pointsPossible) {
@@ -96,24 +93,32 @@ function applyLatePenalty(score, dueDate, submittedDate, pointsPossible) {
 }
 
 
-  const result = [
-    {
-      id: 125,
-      avg: 0.985, // (47 + 150) / (50 + 150)
-      1: 0.94, // 47 / 50
-      2: 1.0 // 150 / 150
-    },
-    {
-      id: 132,
-      avg: 0.82, // (39 + 125) / (50 + 150)
-      1: 0.78, // 39 / 50
-      2: 0.833 // late: (140 - 15) / 150
+function getLearnerData(course, ag, submissions) {
+  try {
+    // Validate that AssignmentGroup belongs to CourseInfo
+    if (ag.course_id !== course.id) {
+      throw new Error(`Course ID mismatch: ${ag.course_id} does not match ${course.id}`);
     }
-  ];
 
-  return result;
+    // Validate assignments
+   ag.assignments.forEach(assign => {
+  if (typeof assign.points_possible !== "number" || assign.points_possible === undefined || assign.points_possible === null) {
+    throw new Error(`Invalid points_possible for assignment ${assign.id}`);
+  }
+  if (assign.points_possible <= 0) {
+    throw new Error(`points_possible must be greater than 0 for assignment ${assign.id}`);
+  }
+});
+
+console.log("Validation passed");
+
+
+   
+
+  } catch (error) {
+    console.error("Error in getLearnerData:", error.message);
+    return [];
+  }
 }
-
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
-
 console.log(result);
