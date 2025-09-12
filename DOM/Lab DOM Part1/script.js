@@ -1,4 +1,3 @@
-
 // Part 1
 const menuLinks = [
     { text: 'about', href: '/about' },
@@ -65,27 +64,27 @@ subMenuEl.style.backgroundColor = "var(--sub-menu-bg)";
 // Add the class of flex-around to the subMenuEl element.
 subMenuEl.classList.add("flex-around");
 
-// Set the CSS position property of subMenuEl to the value of absolute.
+// Set the CSS position property of subMenuEl to the value of absolute.
 subMenuEl.style.position = "absolute";
 
-// Set the CSS top property of subMenuEl to the value of 0.
+// Set the CSS top property of subMenuEl to the value of 0.
 subMenuEl.style.top = "0";
 
-// Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks.
+// Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks.
 const topMenuLinks = topMenuEl.querySelectorAll("a");
 
-// Attach a delegated 'click' event listener to topMenuEl.
+// Attach a delegated 'click' event listener to topMenuEl.
 topMenuEl.addEventListener("click", handleTopMenuClick);
 
 function handleTopMenuClick(e) {
-    // The first line of code of the event listener function should call the event object's preventDefault() method.
+    // The first line of code of the event listener function should call the event object's preventDefault() method.
     e.preventDefault();
 
-    // The second line of code of the function should immediately return if the element clicked was not an <a> element.
+    // The second line of code of the function should immediately return if the element clicked was not an <a> element.
     if (e.target.localName != "a") {
         return false;
     } else {
-        // Log the content of the <a> to verify the handler is working.
+        // Log the content of the <a> to verify the handler is working.
         console.log(e.target.textContent);
         removeAllActiveExcept(e.target); // Remove all active classes from other <a> elements in topMenuLinks except for the target.
         const object = getMenuObjectByName(e.target.textContent); // Get the specific object from the menuLinks array
@@ -96,7 +95,7 @@ function handleTopMenuClick(e) {
             if (object.subLinks) {
                 buildSubmenu(object.subLinks);
                 subMenuEl.style.top = "100%";
-            } else { // If the ABOUT link is clicked, an <h1>About</h1> should be displayed.
+            } else { // If the ABOUT link is clicked, an <h1>About</h1> should be displayed.
                 mainElH1.textContent = capitalizeFirstLetters(object.text);
             }
         } else {
@@ -142,27 +141,27 @@ function removeSubmenu() {
     });
 }
 
-// Attach a delegated 'click' event listener to subMenuEl.
+// Attach a delegated 'click' event listener to subMenuEl.
 subMenuEl.addEventListener("click", handleSubMenuClick);
 
 function handleSubMenuClick(e) {
-    // The first line of code of the event listener function should call the event object's preventDefault() method.
+    // The first line of code of the event listener function should call the event object's preventDefault() method.
     e.preventDefault();
 
-    // The second line of code within the function should immediately return if the element clicked was not an <a> element.
+    // The second line of code within the function should immediately return if the element clicked was not an <a> element.
     if (e.target.localName != "a") {
         return false;
     } else {
-        // Log the content of the <a> to verify the handler is working.
+        // Log the content of the <a> to verify the handler is working.
         console.log(e.target.textContent);
 
-        // Next, the event listener should set the CSS top property of subMenuEl to 0.
+        // Next, the event listener should set the CSS top property of subMenuEl to 0.
         subMenuEl.style.top = "0";
 
-        // Remove the active class from each <a> element in topMenuLinks.
+        // Remove the active class from each <a> element in topMenuLinks.
         removeAllActive();
 
-        // Update the contents of mainEl, within an <h1>, to the contents of the <a> element clicked within subMenuEl.
+        // Update the contents of mainEl, within an <h1>, to the contents of the <a> element clicked within subMenuEl.
         const subMenuText = e.target.textContent;
         mainElH1.textContent = capitalizeFirstLetters(subMenuText);
 
@@ -186,4 +185,3 @@ function capitalizeFirstLetters(words) {
     }
     return wordArray.join(" ")
 }
-
