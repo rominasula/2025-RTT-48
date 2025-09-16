@@ -78,7 +78,7 @@ subMenuEl.style.position = "absolute";
 
 // Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks.
 
-const topMenuElanchor = topMenuEl.children;
+const topMenuLinks = topMenuEl.querySelectorAll('a');
 
 // Attach a delegated 'click' event listener to topMenuEl.
 
@@ -104,6 +104,7 @@ function handleClick(e) {
     } else {
       subMenuEl.style.top = "0";
     }
+      topMenuLinks.forEach(link => link.classList.remove("active"));
 
     // Within the event listener, if the clicked <a> element does not yet have a class of "active" (it was inactive when clicked):
     e.target.classList.toggle("active");
