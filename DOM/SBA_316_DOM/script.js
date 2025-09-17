@@ -1,2 +1,5 @@
 // using getElementById
-const form = document.getElementById("todoForm");
+const taskForm = document.getElementById("taskForm");
+const taskInput = document.querySelector("#taskInput");
+const taskList = document.querySelector("#taskList");
+const clearAllBtn = document.getElementById("clearAll");
