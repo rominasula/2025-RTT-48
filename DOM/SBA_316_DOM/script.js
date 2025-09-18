@@ -51,3 +51,18 @@ taskForm.addEventListener("submit", function (e) {
   updateCounter();
 });
 
+// Clear all tasks
+clearAllBtn.addEventListener("click", function () {
+  // Using BOM method (confirm)
+  if (confirm("Are you sure you want to clear all tasks?")) {
+    while (taskList.firstChild) {
+      taskList.removeChild(taskList.firstChild);
+    }
+    updateCounter();
+  }
+});
+
+// BOM method: reload page
+window.addEventListener("beforeunload", function () {
+  console.log("Page is reloading...");
+});
