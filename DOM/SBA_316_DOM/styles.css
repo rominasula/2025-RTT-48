@@ -40,6 +40,11 @@ li {
   align-items: center;
 }
 
+.high { color: red; }
+.medium { color: orange; }
+.low { color: green; }
+
+
 .completed {
   text-decoration: line-through;
   color: lightblue;

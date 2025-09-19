@@ -11,12 +11,19 @@
     
      <!-- Task Form -->
   <form id="taskForm">
-    <input type="text" id="taskInput" placeholder="Enter a task..." required>
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <select id="priority">
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+    </select>
     <button type="submit">Add Task</button>
   </form>
 
   <!-- Task List -->
   <ul id="taskList"></ul>
+<p>Total Tasks: <span id="counter">0</span></p>
+
 
    <!-- Extra Controls -->
   <button id="clearAll">Clear All</button>

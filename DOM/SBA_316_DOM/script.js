@@ -10,50 +10,58 @@ function updateCounter() {
   taskCounter.innerText = `Total tasks: ${taskList.children.length}`;
 }
 
-// Add new task
-taskForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  // DOM validation: Prevent empty or short tasks
-  if (taskInput.value.trim() === "") {
-    alert("Task cannot be empty!");
-    return;
-  }
-
-  // Create list item
+// Add new task with priority + buttons
+function addTask(taskText, priority = "Low") {
   const li = document.createElement("li");
-  li.innerText = taskInput.value;
 
-  // Add complete button
+  // Task text span (so color applies only here)
+  const taskSpan = document.createElement("span");
+  taskSpan.textContent = `${taskText} [${priority}]`;
+
+  // Add priority class for color
+  if (priority === "High") taskSpan.classList.add("high");
+  if (priority === "Medium") taskSpan.classList.add("medium");
+  if (priority === "Low") taskSpan.classList.add("low");
+
+  // Complete button
   const completeBtn = document.createElement("button");
   completeBtn.innerText = "Done";
   completeBtn.addEventListener("click", function () {
-    li.classList.toggle("completed");
+    taskSpan.classList.toggle("completed");
   });
 
-  // Add delete button
+  // Delete button
   const deleteBtn = document.createElement("button");
   deleteBtn.innerText = "Delete";
   deleteBtn.addEventListener("click", function () {
-    li.parentNode.removeChild(li);
+    li.remove();
     updateCounter();
   });
 
-  // Append buttons
+  // Append everything
+  li.appendChild(taskSpan);
   li.appendChild(completeBtn);
   li.appendChild(deleteBtn);
 
-  // Append task to list
   taskList.appendChild(li);
-
-  // Reset form
-  taskInput.value = "";
   updateCounter();
+}
+
+// Handle form submit
+taskForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const taskText = taskInput.value.trim();
+  const priority = document.getElementById("priority").value;
+  if (taskText !== "") {
+    addTask(taskText, priority);
+    taskInput.value = "";
+  } else {
+    alert("Task cannot be empty!");
+  }
 });
 
 // Clear all tasks
 clearAllBtn.addEventListener("click", function () {
-  // Using BOM method (confirm)
   if (confirm("Are you sure you want to clear all tasks?")) {
     while (taskList.firstChild) {
       taskList.removeChild(taskList.firstChild);
