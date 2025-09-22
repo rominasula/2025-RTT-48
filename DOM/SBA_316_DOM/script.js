@@ -32,9 +32,14 @@ function addTask(taskText, priority = "Low") {
   // Complete button
   const completeBtn = document.createElement("button");
   completeBtn.innerText = "Done";
-  completeBtn.setAttribute("title", "Mark as completed"); // Attribute modification
+  completeBtn.setAttribute("title", "Mark as completed"); // Initial attribute set
+
   completeBtn.addEventListener("click", function () {
     taskSpan.classList.toggle("completed");
+
+    // Modify attribute on user interaction
+    const isCompleted = taskSpan.classList.contains("completed");
+    this.setAttribute("title", isCompleted ? "Undo completion" : "Mark as completed");
 
     // Use parentNode to show DOM navigation 
     console.log("Completed task from parent:", this.parentNode);
