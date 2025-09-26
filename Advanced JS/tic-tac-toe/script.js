@@ -1,7 +1,6 @@
-const cells = document.querySelectorAll('.cell');
-const resetButton = document.getElementById('resetBtn');
-
-let isXTurn = true; // X goes first
+const cells = document.querySelectorAll('td');
+const resetBtn = document.getElementById('reset');
+let isXTurn = true;
 
 cells.forEach(cell => {
   cell.addEventListener('click', () => {
@@ -12,7 +11,7 @@ cells.forEach(cell => {
   });
 });
 
-resetButton.addEventListener('click', () => {
+resetBtn.addEventListener('click', () => {
   cells.forEach(cell => {
     cell.textContent = '';
   });
