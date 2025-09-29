@@ -1,19 +1,30 @@
 const cells = document.querySelectorAll('td');
-const resetBtn = document.getElementById('reset');
-let isXTurn = true;
+console.log(cells); // ✅ Now logs the actual cell elements
 
-cells.forEach(cell => {
-  cell.addEventListener('click', () => {
-    if (cell.textContent === '') {
-      cell.textContent = isXTurn ? 'X' : 'O';
-      isXTurn = !isXTurn;
-    }
-  });
+// const resetBtn = document.getElementById('reset');
+// resetBtn.addEventListener("click", () => {
+//     window.location.reload(); // ✅ Reloads page to reset board
+// });
+
+const deleteBtn = document.getElementById('delete');
+deleteBtn.addEventListener("click", () => {
+    cells.forEach(cell => {
+        cell.textContent = "";
+    });
 });
 
-resetBtn.addEventListener('click', () => {
-  cells.forEach(cell => {
-    cell.textContent = '';
-  });
-  isXTurn = true;
+let currentPlayer = "X";
+
+cells.forEach((cell) => {
+    cell.addEventListener("click", () => {
+        if (cell.textContent === "") {
+            cell.textContent = currentPlayer;
+            currentPlayer = currentPlayer === "X" ? "O" : "X";
+        } else {
+            console.log("Box already marked.");
+        }
+    });
 });
+
+
+
