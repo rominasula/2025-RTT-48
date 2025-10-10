@@ -1,0 +1,13 @@
+I actually started my career in project and client management at a company called F&M Reklama in Albania. I worked closely with clients and internal teams to make sure marketing and production projects ran smoothly. That’s where I really developed my communication, organization, and problem-solving skills.
+
+After that, I wanted to move closer to the technical side, so I transitioned into a Front-End Developer role at Skonitech Solutions. There, I built responsive web applications using HTML, CSS, JavaScript, and React, and collaborated with backend developers to integrate APIs. That experience gave me a solid foundation in coding and teamwork.
+
+In 2021, I joined the National Commercial Bank of Albania, where I worked as a System Analyst and Developer. This is where I really grew technically — I worked with SQL Server, focusing on query optimization, stored procedures, and database performance tuning. I also supported Oracle FLEXCUBE in both production and UAT environments, ensuring system reliability and smooth deployments.
+
+My role was very collaborative — I worked with developers, testers, and business teams to solve data issues and improve performance. I also used tools like Splunk and ScienceLogic for monitoring and troubleshooting. That role really strengthened my ability to think critically and improve systems efficiently.
+
+Earlier this year, after moving to New York, I joined City Merchandise, Inc. as a Purchase Department Specialist, where I handle data accuracy across systems and coordinate with multiple teams. At the same time, I’m part of the Per Scholas Software Engineering Program, where I’m deepening my skills in cloud computing (AWS), API development, and software architecture.
+
+Looking ahead, I’m really focused on growing my career in the IT and banking or fintech sector — ideally as a SQL Developer or System Analyst. I want to apply my technical and analytical skills to build reliable, data-driven systems that improve how organizations use technology.
+
+Overall, my experience has given me a strong foundation in both technical development and business collaboration, and I’m excited to take that next step where I can keep learning and make an impact.
