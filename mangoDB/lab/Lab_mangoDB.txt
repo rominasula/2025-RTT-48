@@ -1,0 +1,113 @@
+Lab_mangoDB
+
+Retrieve all listings where the property_type is "Apartment":
+db["listingsAndReviews"].find({ property_type: "Apartment" })
+
+Find all listings where the price is less than $200:
+db["listingsAndReviews"].find({ price: { $lt: 200 } });
+
+Fetch all listings where accommodates is greater than or equal to 4:
+db["listingsAndReviews"].find({ accommodates: { $gte: 4 } });
+
+Update house_rules of listing with _id: "10009999" to add "No pets allowed":
+
+db["listingsAndReviews"].updateOne(
+  { _id: "10009999" },
+  { $set: { house_rules: "No pets allowed" } }
+);
+
+Increase the cleaning_fee by $20 for _id: "1001265":
+db["listingsAndReviews"].updateOne(
+  { _id: "1001265" },
+  { $inc: { cleaning_fee: 20 } }
+);
+
+ Remove the listing with _id: "1001265":
+db["listingsAndReviews"].deleteOne({ _id: "1001265" });
+
+ Find host_name, host_location, and host_about for _id: "10009999":
+db["listingsAndReviews"].find(
+  { _id: "10009999" },
+  { "host.name": 1, "host.location": 1, "host.about": 1, _id: 0 }
+);
+
+ Retrieve number_of_reviews, review_scores, and last_review for _id: "1001265":
+db["listingsAndReviews"].find(
+  { _id: "1001265" },
+  { number_of_reviews: 1, review_scores: 1, last_review: 1, _id: 0 }
+);
+
+ Querying Nested Data
+ Find listings where host.host_location is "Rio de Janeiro, State of Rio de Janeiro, Brazil":
+db.listings.find({ "host.host_location": "Rio de Janeiro, State of Rio de Janeiro, Brazil" });
+
+ Retrieve listings where amenities include both "Wifi" and "Kitchen":
+db.listings.find({ amenities: { $all: ["Wifi", "Kitchen"] } });
+
+ Updating Nested Data
+ Update the interaction field for _id: "1001265":
+db.listings.updateOne(
+  { _id: "1001265" },
+  {
+    $set: {
+      interaction: "We strive to provide responsive management and assistance throughout your stay."
+    }
+  }
+);
+
+ Deleting Nested Data
+ Remove the neighborhood_overview field from _id: "10009999":
+db.listings.updateOne(
+  { _id: "10009999" },
+  { $unset: { neighborhood_overview: "" } }
+);
+
+📅 Finding by Date
+✅ Find listings where last_review is after January 1st, 2019:
+db.listings.find({
+  last_review: { $gt: new Date("2019-01-01") }
+});
+
+🔢 Counting
+✅ Count total number of listings:
+db.listings.countDocuments();
+
+✅ Count listings where beds > 1:
+db.listings.countDocuments({ beds: { $gt: 1 } });
+
+➕➖ Increment or Decrement
+✅ Increment number_of_reviews by 1 for _id: "10009999":
+db.listings.updateOne(
+  { _id: "10009999" },
+  { $inc: { number_of_reviews: 1 } }
+);
+
+✅ Decrement availability_365 by 1 for all listings:
+db.listings.updateMany(
+  {},
+  { $inc: { availability_365: -1 } }
+);
+
+⚖️ Using $or and $and
+✅ Find listings where property_type is "Apartment" or "Condominium":
+db.listings.find({
+  $or: [
+    { property_type: "Apartment" },
+    { property_type: "Condominium" }
+  ]
+});
+
+✅ Retrieve listings where price < 200 and bedrooms >= 2:
+db.listings.find({
+  $and: [
+    { price: { $lt: 200 } },
+    { bedrooms: { $gte: 2 } }
+  ]
+});
+
+⛓️ Using $limit
+✅ Retrieve first 5 listings sorted by price ascending:
+db.listings.find().sort({ price: 1 }).limit(5);
+
+✅ Find listings where accommodates > 2 and limit to 10:
+db.listings.find({ accommodates: { $gt: 2 } }).limit(10);
