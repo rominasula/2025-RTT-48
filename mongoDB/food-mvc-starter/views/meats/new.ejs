@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+    <h1>Add meat:</h1>
+    <form action="/meats/create" method="POST" class="form form-create">
+        <label for="name">
+            Name:
+            <input type="text" name="name" id="name" required minlength="3">
+        </label>
+        <label for="doneness">
+            Doneness:
+            <input type="text" name="doneness" id="doneness" required minlength="3">
+        </label>
+        <label for="readyToEat">
+            Ready To Eat: 
+            <input type="checkbox" name="readyToEat" id="readyToEat">
+        </label>
+        <button>Create</button>
+    </form>
+    <br><br><br>
+    <p>
+        <a href="/meats">Back</a>
+    </p>
+</body>
+</html>

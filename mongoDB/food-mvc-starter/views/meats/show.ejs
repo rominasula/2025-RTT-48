@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+    <h1>Meat details:</h1>
+    <form class="form form-show">
+        <label for="name">
+            Name:
+            <input type="text" name="name" id="name" value="<%= meat.name %>" disabled>
+        </label>
+        <label for="doneness">
+            Doneness:
+            <input type="text" name="doneness" id="doneness" value="<%= meat.doneness %>" disabled>
+        </label>
+        <label for="readyToEat">
+            Ready To Eat: 
+            <input disabled type="checkbox" name="readyToEat" id="readyToEat" <%= meat.readyToEat ? 'checked' : '' %> >
+        </label>
+        <a href="/meats/<%= meat._id %>/edit">Edit</a>
+    </form>
+    <br><br><br>
+    <p>
+        <a href="/meats">Back</a>
+    </p>
+    <form action="/meats/<%= meat._id %>?_method=DELETE" method="POST" class="align-right"><button>Delete</button></form>
+</body>
+</html>

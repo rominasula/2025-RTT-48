@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/fruits">Fruits</a><a href="/meats">Meats</a><a href="/vegetables">Vegetables</a>
+        </nav>
+    </header>
+    <main>
+        <p>
+            <img src="images/meat.png" alt="some meats">
+        </p>
+        <h1>List of meats:</h1>
+        <ul>
+            <% meats.forEach(meat => { %>
+                <li><a href="/meats/<%= meat._id %>"> <%= meat.name %> </a></li>
+            <% }) %> 
+        </ul>
+        <br><br><br>
+        <p>
+            <a href="/meats/new">Add a new meat</a>
+            <a href="/meats/seed" class="align-right">Reset meats</a>
+        </p>
+    </main>
+</body>
+</html>

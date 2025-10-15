@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+    <h1>Edit a fruit:</h1>
+    <form action="/fruits/<%= fruit._id %>?_method=PUT" method="POST" class="form form-edit">
+        <label for="name">
+            Name:
+            <input type="text" name="name" id="name" value="<%= fruit.name %>">
+        </label>
+        <label for="color">
+            Color:
+            <input type="text" name="color" id="color" value="<%= fruit.color %>">
+        </label>
+        <label for="readyToEat">
+            Ready To Eat: 
+            <input type="checkbox" name="readyToEat" id="readyToEat" <%= fruit.readyToEat ? 'checked' : '' %> >
+        </label>
+        <button>Update</button>
+    </form>
+    <br><br><br>
+    <p>
+        <a href="/fruits/<%= fruit._id %>">Back</a>
+    </p>
+</body>
+</html>
