@@ -1,19 +1,18 @@
+import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
 
-import { MongoClient } from "mongodb";
+const uri = process.env.ATLAS_URI;
 
-console.log("ATLAS_URI is:", process.env.ATLAS_URI); // Debug line
-
-const client = new MongoClient(process.env.ATLAS_URI);
-
-let conn;
 try {
-  conn = await client.connect();
-} catch (e) {
-  console.error("MongoDB connection failed:", e);
+ await mongoose.connect(uri, {
+  dbName: "sample_training"
+});
+  console.log("Connected to MongoDB via Mongoose");
+} catch (err) {
+  console.error("Mongoose connection error:", err);
 }
 
-const db = conn.db("sample_training");
+export default mongoose;
 
-export default db;
+
