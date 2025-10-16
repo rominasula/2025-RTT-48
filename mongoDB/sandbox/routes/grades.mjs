@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import Grade from "../models/Grade.mjs";
+import Grade from "../models/grade.mjs";
 
 const router = express.Router();
 
