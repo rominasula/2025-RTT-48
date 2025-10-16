@@ -23,6 +23,16 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Get all grades
+router.get("/", async (req, res) => {
+  try {
+    const results = await Grade.find({});
+    return res.status(200).send(results);
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+});
+
 // Get a single grade entry
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
